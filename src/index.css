@@ -1,0 +1,233 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --animation-timing: 300ms;
+    --font-sans: 'Inter var', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  }
+
+  /* Smooth scrolling with fallback */
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  /* Better text rendering */
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+    @apply bg-slate-900;
+  }
+
+  /* Improved font loading */
+  body {
+    @apply text-white font-sans;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  }
+
+  /* Improved focus styles */
+  :focus-visible {
+    @apply outline-none ring-2 ring-gold-500 ring-offset-2 ring-offset-slate-900;
+  }
+
+  /* Remove tap highlight on mobile */
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Better image rendering */
+  img {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply relative bg-slate-800/30 backdrop-blur-xl border border-slate-700/50 
+           hover:border-gold-500/50 transition-all duration-500
+           hover:shadow-[0_0_30px_rgba(250,189,0,0.15)]
+           hover:bg-slate-800/40
+           will-change-[border-color,background-color,box-shadow]
+           transform-gpu;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-gold-400 via-gold-500 to-gold-600 
+           bg-clip-text text-transparent
+           will-change-[background-position]
+           transform-gpu;
+  }
+
+  .section-container {
+    @apply container mx-auto px-4 sm:px-6 relative z-10
+           will-change-transform
+           transform-gpu;
+  }
+
+  .section-title {
+    @apply flex justify-center items-center mb-6 sm:mb-12 px-4
+           will-change-transform
+           transform-gpu;
+  }
+
+  .section-title-wrapper {
+    @apply relative inline-flex flex-col sm:flex-row items-center 
+           bg-slate-800/50 backdrop-blur-xl
+           px-4 py-3 sm:px-8 sm:py-6 rounded-xl border border-slate-700/50 
+           shadow-lg hover:border-gold-500/30 hover:bg-slate-800/60
+           transition-all duration-300 w-full sm:w-auto
+           hover:shadow-[0_0_30px_rgba(250,189,0,0.15)]
+           max-w-[calc(100vw-2rem)] sm:max-w-none
+           will-change-[border-color,background-color,box-shadow]
+           transform-gpu;
+  }
+
+  .section-title-icon {
+    @apply flex items-center justify-center w-8 h-8 sm:w-12 sm:h-12
+           bg-gradient-to-br from-gold-500/10 to-gold-600/10
+           rounded-lg border border-gold-500/20 mb-2 sm:mb-0 sm:mr-6
+           transition-all duration-300 group-hover:scale-110
+           shrink-0
+           will-change-transform
+           transform-gpu;
+  }
+
+  .section-title-text {
+    @apply text-xl sm:text-4xl md:text-5xl font-bold tracking-tight
+           bg-gradient-to-r from-gold-400 via-gold-500 to-gold-600
+           bg-clip-text text-transparent leading-tight sm:leading-relaxed
+           py-1 sm:py-2 text-center sm:text-left
+           will-change-[background-position]
+           transform-gpu;
+  }
+
+  .section-description {
+    @apply text-base sm:text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed 
+           mt-4 sm:mt-6 px-4 text-center
+           will-change-transform
+           transform-gpu;
+  }
+
+  /* Optimized button styles */
+  .btn {
+    @apply inline-flex items-center justify-center px-6 py-3
+           rounded-lg font-medium transition-all duration-300
+           focus:outline-none focus:ring-2 focus:ring-offset-2
+           disabled:opacity-50 disabled:cursor-not-allowed
+           will-change-[transform,background-color]
+           transform-gpu;
+  }
+
+  .btn-primary {
+    @apply bg-gold-500 text-slate-900 
+           hover:bg-gold-600 
+           focus:ring-gold-500 focus:ring-offset-slate-900
+           active:scale-95;
+  }
+
+  /* Optimized input styles */
+  .input {
+    @apply w-full px-4 py-3 bg-slate-900/50 rounded-lg
+           border border-slate-700 text-white
+           focus:ring-2 focus:ring-gold-400 focus:border-transparent
+           transition-all duration-300
+           will-change-[border-color,box-shadow]
+           transform-gpu;
+  }
+}
+
+@layer utilities {
+  /* Optimized animations */
+  .animate-float {
+    animation: float 6s cubic-bezier(0.23, 1, 0.32, 1) infinite;
+    will-change: transform;
+  }
+
+  .animate-pulse-slow {
+    animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    will-change: opacity;
+  }
+
+  .animate-glow {
+    animation: glow 2s cubic-bezier(0.23, 1, 0.32, 1) infinite alternate;
+    will-change: box-shadow;
+  }
+
+  .animate-gradient-x {
+    animation: gradient-x 15s cubic-bezier(0.23, 1, 0.32, 1) infinite;
+    will-change: background-position;
+  }
+
+  /* Improved text rendering */
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .text-pretty {
+    text-wrap: pretty;
+  }
+
+  /* Better image handling */
+  .image-rendering-crisp {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+}
+
+/* Optimized keyframe animations */
+@keyframes float {
+  0%, 100% { 
+    transform: translateY(0); 
+  }
+  50% { 
+    transform: translateY(-20px); 
+  }
+}
+
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 5px rgba(250, 189, 0, 0.2),
+                0 0 20px rgba(250, 189, 0, 0.2);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(250, 189, 0, 0.4),
+                0 0 40px rgba(250, 189, 0, 0.2);
+  }
+}
+
+@keyframes gradient-x {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  body {
+    @apply text-slate-900 bg-white;
+  }
+
+  a {
+    text-decoration: underline;
+  }
+
+  .section-title-text,
+  .gradient-text {
+    -webkit-text-fill-color: currentColor;
+    @apply text-slate-900;
+  }
+}
